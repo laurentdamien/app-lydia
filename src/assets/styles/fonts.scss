@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Sarabun-Book";
+  src: url($assetFonts+"Sarabun/subset-Sarabun-Regular.woff2") format("woff2"),
+    url($assetFonts+"Sarabun/subset-Sarabun-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sarabun-Bold";
+  src: url($assetFonts+"Sarabun/subset-Sarabun-Bold.woff2") format("woff2"),
+    url($assetFonts+"Sarabun/subset-Sarabun-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sarabun-Medium";
+  src: url($assetFonts+"Sarabun/subset-Sarabun-Medium.woff2") format("woff2"),
+    url($assetFonts+"Sarabun/subset-Sarabun-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

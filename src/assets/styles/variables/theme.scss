@@ -1,0 +1,25 @@
+/* path */
+$assetSvg: "~@/assets/images/";
+$assetFonts: "~@/assets/fonts/";
+
+// Screen width - breakpoints
+$width_XXXL: 1600px;
+$width_XXL: 1500px;
+$width_XL: 1400px;
+$width_L: 1280px;
+$width_M: 992px;
+$width_S: 768px;
+$width_XS: 480px;
+$width_XXS: 320px;
+
+// Zindex
+$overlay-zindex: 3;
+$popup-zindex: 20;
+$popup-content-zindex: 4;
+
+// Size
+$max-width-container: 1600px;
+$section-padding-horizontal-mobile: 20px;
+
+$header-height: 80px;
+$header-mobile-height: 60px;

@@ -1,0 +1,111 @@
+@mixin background() {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flexRowCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@mixin underlineHover($height, $color) {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    background-color: $color;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $height;
+    transform: translateX(-101%);
+    transition: transform 0.25s ease-in-out;
+  }
+
+  &:hover::after {
+    transform: translateX(0);
+  }
+}
+
+// $size en px, exemple : 20px
+// $color en hexa, rgb ou rgba
+@mixin cross($size, $color) {
+  position: relative;
+  display: block;
+  width: $size;
+  height: $size;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $size;
+    height: 2px;
+    background-color: $color;
+    border-radius: 3px;
+  }
+
+  &::before {
+    transform: translate3d(-50%, -50%, 0) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+  }
+}
+
+// $direction en string, exemple : right
+// $size en number, exemple : 20
+// $color en hexa, rgb ou rgba
+@mixin arrow($direction, $size, $color) {
+  &::after {
+    content: "";
+    position: absolute;
+
+    @if ($direction == "top") {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom: #{$size}px solid $color;
+      border-left: #{$size - 2}px solid transparent;
+      border-right: #{$size - 2}px solid transparent;
+    } @else if ($direction == "right") {
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: #{$size}px solid $color;
+      border-top: #{$size - 2}px solid transparent;
+      border-bottom: #{$size - 2}px solid transparent;
+    } @else if ($direction == "bottom") {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top: #{$size}px solid $color;
+      border-left: #{$size - 2}px solid transparent;
+      border-right: #{$size - 2}px solid transparent;
+    } @else if ($direction == "left") {
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right: #{$size}px solid $color;
+      border-top: #{$size - 2}px solid transparent;
+      border-bottom: #{$size - 2}px solid transparent;
+    }
+  }
+}
