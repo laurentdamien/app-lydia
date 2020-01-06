@@ -1,38 +1,41 @@
 <template>
   <div class="users">
-    <h2 class="title">Liste des utilisateurs</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Photo</th>
-          <th>Nom / Société</th>
-          <th>Solde</th>
-          <th>Profil</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="user-item" v-for="user in users" :key="user.id">
-          <td>{{ user.id }}</td>
-          <td class="user-photo">
-            <img
-              :src="user.image"
-              @error="setImgDefault"
-              :alt="`Photo de ${usersAPI.getUserFullname(user)}`"
-            />
-          </td>
-          <td>
-            {{ usersAPI.getUserFullname(user) }}
-          </td>
-          <td>{{ user.currentBallance }}€</td>
-          <td>
-            <router-link :to="{ name: 'user', params: { id: user.id } }">
-              Consulter le profil
-            </router-link>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div v-if="users">
+      <h2 class="title">Liste des utilisateurs</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Photo</th>
+            <th>Nom / Société</th>
+            <th>Solde</th>
+            <th>Profil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="user-item" v-for="user in users" :key="user.id">
+            <td>{{ user.id }}</td>
+            <td class="user-photo">
+              <img
+                :src="user.image"
+                @error="setImgDefault"
+                :alt="`Photo de ${usersAPI.getUserFullname(user)}`"
+              />
+            </td>
+            <td>
+              {{ usersAPI.getUserFullname(user) }}
+            </td>
+            <td>{{ user.currentBallance }}€</td>
+            <td>
+              <router-link :to="{ name: 'user', params: { id: user.id } }">
+                Consulter le profil
+              </router-link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <img v-else class="loader" :src="`${baseUrl}/loading.gif`" alt="loader" />
   </div>
 </template>
 

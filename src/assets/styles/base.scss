@@ -2,6 +2,7 @@ html,
 body,
 body * {
   font-family: $font-regular;
+  color: $color-text;
 
   @media screen and (max-width: $width_S) {
     -webkit-overflow-scrolling: touch;
@@ -34,6 +35,13 @@ sup {
     width: 100%;
     padding: 0 $section-padding-horizontal-mobile;
   }
+}
+
+.loader {
+  display: block;
+  width: 100px;
+  height: auto;
+  margin: 200px auto 0;
 }
 
 .back {

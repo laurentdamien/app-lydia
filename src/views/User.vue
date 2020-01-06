@@ -1,27 +1,30 @@
 <template>
-  <div v-if="user" class="user">
-    <router-link :to="{ name: 'users' }" class="back">Retour</router-link>
-    <h2 class="title">{{ usersAPI.getUserFullname(user) }}</h2>
-    <div class="user-content">
-      <img
-        :src="user.image"
-        @error="setImgDefault"
-        :alt="`Photo de ${usersAPI.getUserFullname(user)}`"
-      />
-      <div class="user-informations">
-        <div class="user-current-ballance">
-          Solde : {{ user.currentBallance }}€
+  <div class="user">
+    <div v-if="user">
+      <router-link :to="{ name: 'users' }" class="back">Retour</router-link>
+      <h2 class="title">{{ usersAPI.getUserFullname(user) }}</h2>
+      <div class="user-content">
+        <img
+          :src="user.image"
+          @error="setImgDefault"
+          :alt="`Photo de ${usersAPI.getUserFullname(user)}`"
+        />
+        <div class="user-informations">
+          <div class="user-current-ballance">
+            Solde : {{ user.currentBallance }}€
+          </div>
+          <div v-if="!user.isPro">Né le {{ user.dob }} à {{ user.pob }}</div>
+          <div v-if="user.isPro && user.dob">Créée le {{ user.dob }}</div>
+          <div v-if="user.isPro && user.pob">A {{ user.pob }}</div>
+          <div>
+            Status de l'utilisateur :
+            {{ user.isPro ? "Professionnel" : "Particulier" }}
+          </div>
+          <div>Fraudeur : {{ user.isFraudster ? "Oui" : "Non" }}</div>
         </div>
-        <div v-if="!user.isPro">Né le {{ user.dob }} à {{ user.pob }}</div>
-        <div v-if="user.isPro && user.dob">Créée le {{ user.dob }}</div>
-        <div v-if="user.isPro && user.pob">A {{ user.pob }}</div>
-        <div>
-          Status de l'utilisateur :
-          {{ user.isPro ? "Professionnel" : "Particulier" }}
-        </div>
-        <div>Fraudeur : {{ user.isFraudster ? "Oui" : "Non" }}</div>
       </div>
     </div>
+    <img v-else class="loader" :src="`${baseUrl}/loading.gif`" alt="loader" />
   </div>
 </template>
 
