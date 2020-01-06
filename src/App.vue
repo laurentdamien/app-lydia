@@ -58,6 +58,8 @@ export default class App extends Vue {}
     width: grid(9);
     margin-left: grid(3);
     padding: 40px 60px;
+    animation: fadeIn 0.3s ease-in-out;
+    animation-fill-mode: both;
   }
 }
 </style>

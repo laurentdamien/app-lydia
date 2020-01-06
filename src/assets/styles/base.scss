@@ -36,93 +36,89 @@ sup {
   }
 }
 
-.v-fade {
-  display: inherit !important;
-  transition: opacity 0.3s ease-in-out;
+.back {
+  color: #000000;
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
 
-  &[style*="display: none;"] {
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-}
-
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: $popup-zindex;
-  width: 100vw;
-  height: 100%;
-
-  &__close {
-    @include cross(25px, $color-main);
-    background-color: #ffffff;
+  &::before,
+  &::after {
+    content: "";
+    background-color: #000000;
     position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    width: 60px;
-    height: 100%;
-    min-height: 50px;
-    max-height: 80px;
-    transition: background-color 0.25s ease-in-out;
-
-    @media screen and (max-width: $width_S) {
-      @include cross(20px, $color-main);
-    }
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 8px;
+    height: 1px;
+    transition: transform 0.25s ease-in-out;
   }
 
-  &__wrapper {
-    @include center;
-    text-align: center;
-    background-color: #ffffff;
-    z-index: $popup-content-zindex;
-    width: grid(6);
-    max-width: 650px;
-    padding: 40px 60px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-
-    @media screen and (max-width: $width_M) {
-      width: grid(8);
-    }
-
-    @media screen and (max-width: $width_S) {
-      width: 100%;
-      max-width: none;
-    }
-
-    &.show {
-      opacity: 1;
-    }
+  &::before {
+    top: calc(50% - 3px);
+    transform: translate(0, -50%) rotate(-45deg);
   }
 
-  &__button {
-    &-container {
-      @include flexRowCenter;
+  &::after {
+    top: calc(50% + 3px);
+    transform: translate(0, -50%) rotate(45deg);
+  }
 
-      button {
-        margin: 20px 10px 0;
-      }
+  &:hover {
+    &::before {
+      transform: translate(-5px, -50%) rotate(-45deg);
+    }
+
+    &::after {
+      transform: translate(-5px, -50%) rotate(45deg);
     }
   }
 }
 
-.overlay {
-  z-index: $overlay-zindex;
-  position: absolute;
-  top: 0;
-  left: 0;
+table {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+}
 
-  &.show {
-    opacity: 1;
+thead tr {
+  background-color: $color-main;
+
+  th {
+    color: #ffffff;
   }
+}
+
+tbody tr {
+  background-color: #ffffff;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+
+  td:first-child {
+    font-family: $font-bold;
+  }
+}
+
+tr {
+  border: 1px solid #eeeeee;
+}
+
+th,
+td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 20px 10px;
+
+  a {
+    color: $color-main;
+    display: block;
+  }
+}
+
+th {
+  font-family: $font-bold;
 }
 
 .title {
@@ -130,13 +126,5 @@ sup {
   font-size: 28px;
   color: $color-main;
   text-align: center;
-  margin-bottom: 30px;
-}
-
-.subtitle {
-  font-family: $font-bold;
-  font-size: 22px;
-  color: $color-text;
-  text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }

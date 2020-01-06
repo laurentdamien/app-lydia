@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="section-container">
-      <router-link tag="h1" to="/" class="header-title">Lydia - Back office</router-link>
+      <router-link tag="h1" to="/" class="header-title"
+        >Lydia - Back office</router-link
+      >
     </div>
   </header>
 </template>
@@ -32,6 +34,7 @@ export default {
     font-family: $font-bold;
     font-size: 24px;
     color: $color-main;
+    display: inline-block;
     cursor: pointer;
   }
 
