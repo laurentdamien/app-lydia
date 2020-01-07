@@ -1,6 +1,9 @@
 <template>
   <div class="transaction">
     <div v-if="transaction">
+      <router-link :to="{ name: 'transactions' }" class="back">
+        Retour
+      </router-link>
       <h2 class="title">Transaction N°{{ transaction.id }}</h2>
       <div class="transaction-date">Le {{ convertDate(transaction.date) }}</div>
       <div class="transaction-content">
@@ -28,6 +31,7 @@
             alt="Refusé"
             title="Refusé"
           />
+          <div class="transaction-amount__arrow"></div>
         </div>
         <div class="transaction-user">
           {{ usersAPI.getUserFullname(transaction.receiver) }}
@@ -105,6 +109,7 @@ export default class Transaction extends Vue {
     font-family: $font-regular;
     font-style: italic;
     font-size: 16px;
+    white-space: nowrap;
   }
 
   &-user {
@@ -125,16 +130,6 @@ export default class Transaction extends Vue {
     margin: 0 20px;
     padding-top: 10px;
 
-    &::after {
-      content: "";
-      background-color: $color-main;
-      position: absolute;
-      top: 50px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-    }
-
     span {
       font-family: $font-bold;
       font-size: 26px;
@@ -151,6 +146,37 @@ export default class Transaction extends Vue {
       z-index: 2;
       display: block;
       margin: 0 auto;
+    }
+
+    &__arrow {
+      background-color: $color-main;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 1px;
+
+      &::before,
+      &::after {
+        content: "";
+        background-color: $color-main;
+        position: absolute;
+        right: -1px;
+        display: block;
+        width: 10px;
+        height: 1px;
+      }
+
+      &::before {
+        top: -4px;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        top: 4px;
+        transform: rotate(-45deg);
+      }
     }
   }
 

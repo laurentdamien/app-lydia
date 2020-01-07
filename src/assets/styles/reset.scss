@@ -210,7 +210,8 @@ input:-webkit-autofill {
 }
 
 input,
-textarea {
+textarea,
+select {
   appearance: none;
   border: 1px solid #989898;
   border-radius: 0;

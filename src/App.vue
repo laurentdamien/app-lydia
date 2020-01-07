@@ -60,6 +60,10 @@ export default class App extends Vue {}
     padding: 40px 60px;
     animation: fadeIn 0.3s ease-in-out;
     animation-fill-mode: both;
+
+    > div {
+      position: relative;
+    }
   }
 }
 </style>
